@@ -1,0 +1,68 @@
+﻿@page
+@model Final_Project_Food_Service_Aggregator.Pages.Restaurants.DetailsModel
+
+@{
+    ViewData["Title"] = "Restaurant Details";
+}
+<div class="container">
+    <h1>Restaurant Details</h1>
+
+    <div>
+        <h4>Restaurant</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Address)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.ContactNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.ContactNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.LicenseNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.LicenseNumber)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Cuisine)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Cuisine)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.Rating)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.Rating)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.StartTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.StartTime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Restaurant.EndTime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Restaurant.EndTime)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Restaurant.RestaurantId">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
+</div>

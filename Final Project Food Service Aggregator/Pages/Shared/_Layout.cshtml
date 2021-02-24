@@ -3,41 +3,75 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Final_Project_Food_Service_Aggregator</title>
+    <title>@ViewData["Title"] - Foodies</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Final_Project_Food_Service_Aggregator</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <div class="d-block">
+            <nav class="sidebar">
+                <div class="dismiss">
+                    <i class="bi bi-x"></i>
                 </div>
+                <div class="logo">
+                    <a asp-area="" asp-page="/index"></a>
+                </div>
+
+                <ul class="list-unstyled menu-elements">
+                    <li class="active">
+                        <a class="scroll-link" href="/index">Home</a>
+                    </li>
+                    <li>
+                        <a class="scroll-link" href="/aboutUs">About us</a>
+                    </li>
+                    <li>
+                        <a class="scroll-link" href="/help">Help</a>
+                    </li>
+                    <li>
+                        <a href="#adminSection" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="adminSection">
+                            Administration
+                        </a>
+                        <ul class="collapse list-unstyled" id="adminSection">
+                            <li>
+                                <a class="scroll-link" href="/restaurants">Restaurant</a>
+                            </li>
+                            <li>
+                                <a class="scroll-link" href="/customers">Customer</a>
+                            </li>
+                            <li>
+                                <a class="scroll-link" href="/deliveryPartners">Delivery Partner</a>
+                            </li>
+                            <li>
+                                <a class="scroll-link" href="/orders">Order</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="overlay"></div>
+
+            <div class="content">
+                <a class="btn open-menu" href="#">
+                    <i class="bi bi-justify"></i>
+                </a>
             </div>
-        </nav>
+
+        </div>
+
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <main role="main" class="pb-3">
+        <div class="text-center" id="header">
+            <h1 class="display-4">FOODIES</h1>
+        </div>
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Final_Project_Food_Service_Aggregator - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2021 - Foodies
         </div>
     </footer>
 
