@@ -14,9 +14,14 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="DeliveryPartner.DeliveryPartnerId" />
                 <div class="form-group">
-                    <label asp-for="DeliveryPartner.Name" class="control-label"></label>
-                    <input asp-for="DeliveryPartner.Name" class="form-control" />
-                    <span asp-validation-for="DeliveryPartner.Name" class="text-danger"></span>
+                    <label asp-for="DeliveryPartner.FirstName" class="control-label"></label>
+                    <input asp-for="DeliveryPartner.FirstName" class="form-control" />
+                    <span asp-validation-for="DeliveryPartner.FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DeliveryPartner.LastName" class="control-label"></label>
+                    <input asp-for="DeliveryPartner.LastName" class="form-control" />
+                    <span asp-validation-for="DeliveryPartner.LastName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="DeliveryPartner.ContactNumber" class="control-label"></label>
@@ -39,7 +44,6 @@
         <a asp-page="./Index">Back to List</a>
     </div>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

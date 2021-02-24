@@ -5,7 +5,6 @@
     ViewData["Title"] = "Delivery Partners Diectory";
 }
 <div class="container">
-
     <h1>Delivery Partners Directory</h1>
 
     <p>
@@ -15,7 +14,10 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.DeliveryPartner[0].Name)
+                    @Html.DisplayNameFor(model => model.DeliveryPartner[0].FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryPartner[0].LastName)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DeliveryPartner[0].ContactNumber)
@@ -27,24 +29,28 @@
             </tr>
         </thead>
         <tbody>
-    @foreach (var item in Model.DeliveryPartner) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.DeliveryPartnerId">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.DeliveryPartnerId">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.DeliveryPartnerId">Delete</a>
-                </td>
-            </tr>
-    }
+            @foreach (var item in Model.DeliveryPartner)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.DeliveryPartnerId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.DeliveryPartnerId">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.DeliveryPartnerId">Delete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
