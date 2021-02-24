@@ -29,7 +29,12 @@ namespace Final_Project_Food_Service_Aggregator.Models
         public string ZipCode { get; set; }
 
         [DisplayName("Restaurant Address")]
-        public string Address { get; set; }
+        public string Address { 
+            get
+            {
+                return AddressLine1 + " " + AddressLine2 + " " + City + " " + State + " " + ZipCode;
+            }
+        }
 
         [DisplayName("Contact Number")]
         public string ContactNumber { get; set; }

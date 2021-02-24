@@ -16,6 +16,23 @@ namespace Final_Project_Food_Service_Aggregator.Models
         [DisplayName("Customer Last Name")]
         public string LastName { get; set; }
 
+        [DisplayName("Name")]
+        public string Name { 
+            get {
+                return FirstName + " " + LastName;
+            } 
+        }
+
+        [DisplayName("Customer Address")]
+        public string Address
+        {
+            get
+            {
+                return AddressLine1 + " " + AddressLine2 + " " + City + " " + State + " " + ZipCode;
+            }
+        }
+
+
         [DisplayName("Address Line 1")]
         public string AddressLine1 { get; set; }
 

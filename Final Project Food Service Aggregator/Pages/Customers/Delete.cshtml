@@ -13,16 +13,46 @@
         <hr />
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Customer.Name)
+                @Html.DisplayNameFor(model => model.Customer.FirstName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Customer.Name)
+                @Html.DisplayFor(model => model.Customer.FirstName)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Customer.Address)
+                @Html.DisplayNameFor(model => model.Customer.LastName)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Customer.Address)
+                @Html.DisplayFor(model => model.Customer.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Customer.AddressLine1)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Customer.AddressLine1)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Customer.AddressLine2)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Customer.AddressLine2)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Customer.City)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Customer.City)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Customer.State)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Customer.State)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Customer.ZipCode)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Customer.ZipCode)
             </dd>
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Customer.ContactNumber)
@@ -37,7 +67,7 @@
                 @Html.DisplayFor(model => model.Customer.Email)
             </dd>
         </dl>
-    
+
         <form method="post">
             <input type="hidden" asp-for="Customer.CustomerId" />
             <input type="submit" value="Delete" class="btn btn-danger" /> |

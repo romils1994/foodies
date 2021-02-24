@@ -16,6 +16,15 @@ namespace Final_Project_Food_Service_Aggregator.Models
         [DisplayName("Delivery Partner Last Name")]
         public string LastName { get; set; }
 
+        [DisplayName("Delivery Partner Name")]
+        public string Name
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
+
         [DisplayName("Contact Number")]
         public string ContactNumber { get; set; }
 
