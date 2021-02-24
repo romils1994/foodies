@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Final_Project_Food_Service_Aggregator.Models
 {
@@ -49,10 +51,12 @@ namespace Final_Project_Food_Service_Aggregator.Models
         public int? Rating { get; set; }
 
         [DisplayName("Start Time")]
-        public DateTime StartTime { get; set; }
+        [DataType(DataType.Time)]
+        public TimeSpan StartTime { get; set; }
 
         [DisplayName("End Time")]
-        public DateTime EndTime { get; set; }
+        [DataType(DataType.Time)]
+        public TimeSpan EndTime { get; set; }
         public List<Order> Orders { get; set; }
     }
 
