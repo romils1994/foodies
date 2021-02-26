@@ -21,10 +21,6 @@ namespace Final_Project_Food_Service_Aggregator.Pages
 
         public bool SearchCompleted { get; set; }
 
-        public bool HasTopRated { get; set; }
-
-        public bool HasMostPopular { get; set; }
-
         public IList<Restaurant> Restaurant { get; set; }
 
         public IList<Restaurant> TopRatedRestaurant { get; set; }
@@ -39,14 +35,11 @@ namespace Final_Project_Food_Service_Aggregator.Pages
             if (!string.IsNullOrWhiteSpace(query))
             {
                 SearchCompleted = true;
-                HasTopRated = false;
-                HasMostPopular = false;
                 Restaurant = await _context.Restaurant.Where(x => x.Name.Contains(query) || x.Cuisine.Contains(query)).ToListAsync();
             }
             else
             {
                 SearchCompleted = false;
-                HasTopRated = true;
                 TopRatedRestaurant = await _context.Restaurant.Where(x => x.Rating >= 4).Take(4).ToListAsync();
                 var currentTime = DateTime.Now.TimeOfDay;
                 ServingNowRestaurant = await _context.Restaurant.Where(x => currentTime >= x.StartTime && currentTime <= x.EndTime).Take(4).ToListAsync();
