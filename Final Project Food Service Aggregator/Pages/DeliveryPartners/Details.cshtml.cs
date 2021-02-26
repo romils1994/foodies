@@ -28,7 +28,9 @@ namespace Final_Project_Food_Service_Aggregator.Pages.DeliveryPartners
                 return NotFound();
             }
 
-            DeliveryPartner = await _context.DeliveryPartner.FirstOrDefaultAsync(m => m.DeliveryPartnerId == id);
+            DeliveryPartner = await _context.DeliveryPartner
+                .Include(x => x.Orders)
+                .FirstOrDefaultAsync(m => m.DeliveryPartnerId == id);
 
             if (DeliveryPartner == null)
             {

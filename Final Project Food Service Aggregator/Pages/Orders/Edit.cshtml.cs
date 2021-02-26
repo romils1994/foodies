@@ -39,9 +39,9 @@ namespace Final_Project_Food_Service_Aggregator.Pages.Orders
             {
                 return NotFound();
             }
-           ViewData["CustomerId"] = new SelectList(_context.Set<Customer>(), "CustomerId", "CustomerId");
-           ViewData["DeliveryPartnerId"] = new SelectList(_context.Set<DeliveryPartner>(), "DeliveryPartnerId", "DeliveryPartnerId");
-           ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "RestaurantId", "RestaurantId");
+           ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "Name");
+           ViewData["DeliveryPartnerId"] = new SelectList(_context.DeliveryPartner, "DeliveryPartnerId", "Name");
+           ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "RestaurantId", "Name");
             return Page();
         }
 
@@ -49,6 +49,24 @@ namespace Final_Project_Food_Service_Aggregator.Pages.Orders
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "Name");
+            ViewData["DeliveryPartnerId"] = new SelectList(_context.DeliveryPartner, "DeliveryPartnerId", "Name");
+            ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "RestaurantId", "Name");
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            var restaurantId = Order.RestaurantId;
+            TimeSpan orderTime = Order.Date.TimeOfDay;
+            var restaurant = await _context.Restaurant.Where(x => x.RestaurantId == restaurantId).ToListAsync();
+            TimeSpan restaurantStartTime = restaurant[0].StartTime;
+            TimeSpan restaurantEndTime = restaurant[0].EndTime;
+            if ((orderTime < restaurantStartTime) || (orderTime > restaurantEndTime))
+            {
+                ModelState.AddModelError("Order.Date", "The Order Time should be within Restaurant Start Time and End Time");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();

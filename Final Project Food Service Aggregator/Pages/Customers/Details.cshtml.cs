@@ -28,7 +28,9 @@ namespace Final_Project_Food_Service_Aggregator.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerId == id);
+            Customer = await _context.Customer
+                .Include(x => x.Orders)
+                .FirstOrDefaultAsync(m => m.CustomerId == id);
 
             if (Customer == null)
             {

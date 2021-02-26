@@ -9,8 +9,6 @@
 
     <h3>Are you sure you want to remove the customer details?</h3>
     <div>
-        <h4>Customer</h4>
-        <hr />
         <dl class="row">
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Customer.FirstName)
@@ -71,7 +69,7 @@
         <form method="post">
             <input type="hidden" asp-for="Customer.CustomerId" />
             <input type="submit" value="Delete" class="btn btn-danger" /> |
-            <a asp-page="./Index">Back to List</a>
+            <a asp-page="./Index">Back to Customer Directory</a>
         </form>
     </div>
 </div>

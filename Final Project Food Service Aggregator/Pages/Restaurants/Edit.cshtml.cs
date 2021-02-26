@@ -48,6 +48,18 @@ namespace Final_Project_Food_Service_Aggregator.Pages.Restaurants
                 return Page();
             }
 
+            TimeSpan duration = Restaurant.EndTime.Subtract(Restaurant.StartTime);
+            
+            if(TimeSpan.Compare(duration, TimeSpan.Zero) <= 0)
+            {
+                ModelState.AddModelError("Restaurant.EndTime", "The Restaurant End Time can not be less or equal to than Start Time");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
             _context.Attach(Restaurant).State = EntityState.Modified;
 
             try

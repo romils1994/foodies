@@ -14,8 +14,8 @@
     });
 });
 
-$(".jumbotron").css({ height: $(window).height() - $('#header').height() + "px" });
+$(".jumbotron").css({ height: ($(window).height() - $('#header').height())/2 + "px" });
 
 $(window).on("resize", function () {
-    $(".jumbotron").css({ height: $(window).height() - $('#header').height() + "px" });
+    $(".jumbotron").css({ height: ($(window).height() - $('#header').height())/2 + "px" });
 });

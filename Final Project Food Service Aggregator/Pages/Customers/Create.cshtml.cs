@@ -36,6 +36,7 @@ namespace Final_Project_Food_Service_Aggregator.Pages.Customers
                 return Page();
             }
 
+
             _context.Customer.Add(Customer);
             await _context.SaveChangesAsync();
 

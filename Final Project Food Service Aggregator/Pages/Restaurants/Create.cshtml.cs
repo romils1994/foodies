@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Final_Project_Food_Service_Aggregator.Data;
 using Final_Project_Food_Service_Aggregator.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Final_Project_Food_Service_Aggregator.Pages.Restaurants
 {
@@ -31,6 +32,24 @@ namespace Final_Project_Food_Service_Aggregator.Pages.Restaurants
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            TimeSpan duration = Restaurant.EndTime.Subtract(Restaurant.StartTime);
+            if (TimeSpan.Compare(duration, TimeSpan.Zero) <= 0)
+            {
+                ModelState.AddModelError("Restaurant.EndTime", "The Restaurant End Time can not be less or equal to than Start Time");
+            }
+            var licenseNumber = Restaurant.LicenseNumber;
+            bool licenseNumberAlreadyExists = await _context.Restaurant.AnyAsync(x => x.LicenseNumber == licenseNumber);
+
+            if (licenseNumberAlreadyExists)
+            {
+                ModelState.AddModelError("Restaurant.LicenceNumber", "Restaurant with this license Number already exists");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();

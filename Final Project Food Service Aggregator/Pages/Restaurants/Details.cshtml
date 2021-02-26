@@ -9,8 +9,6 @@
     <h1>Restaurant Details</h1>
 
     <div>
-        <h4>Restaurant</h4>
-        <hr />
         <dl class="row">
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Restaurant.Name)
@@ -87,7 +85,62 @@
         </dl>
     </div>
     <div>
+        <h2>Order Details</h2>
+        @if (Model.Restaurant.Orders.Any())
+        {
+            <p>
+                <strong>@Model.Restaurant.Orders.Count()</strong>
+                @if (Model.Restaurant.Orders.Count() == 1)
+                {
+                    <text>Order</text>
+                }
+                else
+                {
+                    <text>Orders</text>
+                }
+                Found
+            </p>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Order Date</th>
+                        <th>Order Status</th>
+                        <th class="text-right">Order Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model.Restaurant.Orders)
+                    {
+                        <tr>
+                            <td>@order.OrderId</td>
+                            <td>@order.Date</td>
+                            <td>@order.Status</td>
+                            <td class="text-right">@order.Total</td>
+                            <td><a asp-page="/Orders/Details" asp-route-id="@order.OrderId">Details</a></td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th class="text-right">Total Order Total:</th>
+                        <th class="text-right">$@Model.Restaurant.Orders.Sum(x => x.Total)</th>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <p>There are no orders to display</p>
+            </div>
+        }
+    </div>
+    <div>
         <a asp-page="./Edit" asp-route-id="@Model.Restaurant.RestaurantId">Edit</a> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-page="./Index">Back to Restaurant Directory</a>
     </div>
 </div>

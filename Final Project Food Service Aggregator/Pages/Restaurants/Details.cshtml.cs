@@ -28,7 +28,9 @@ namespace Final_Project_Food_Service_Aggregator.Pages.Restaurants
                 return NotFound();
             }
 
-            Restaurant = await _context.Restaurant.FirstOrDefaultAsync(m => m.RestaurantId == id);
+            Restaurant = await _context.Restaurant
+                .Include(x => x.Orders)
+                .FirstOrDefaultAsync(m => m.RestaurantId == id);
 
             if (Restaurant == null)
             {
