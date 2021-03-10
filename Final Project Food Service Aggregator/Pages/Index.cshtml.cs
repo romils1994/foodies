@@ -40,9 +40,9 @@ namespace Final_Project_Food_Service_Aggregator.Pages
             else
             {
                 SearchCompleted = false;
-                TopRatedRestaurant = await _context.Restaurant.Where(x => x.Rating >= 4).Take(4).ToListAsync();
+                TopRatedRestaurant = await _context.Restaurant.Where(x => x.Rating >= 4).OrderByDescending(x => x.Rating).Take(4).ToListAsync();
                 var currentTime = DateTime.Now.TimeOfDay;
-                ServingNowRestaurant = await _context.Restaurant.Where(x => currentTime >= x.StartTime && currentTime <= x.EndTime).Take(4).ToListAsync();
+                ServingNowRestaurant = await _context.Restaurant.Where(x => currentTime >= x.StartTime && currentTime <= x.EndTime).OrderByDescending(x => currentTime-x.EndTime).Take(4).ToListAsync();
             }
         }
     }
