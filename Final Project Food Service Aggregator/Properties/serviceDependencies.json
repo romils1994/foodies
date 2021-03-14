@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "mssql1": {
-      "type": "mssql",
-      "connectionId": "Final_Project_Food_Service_AggregatorContext"
-    }
-  }
-}
